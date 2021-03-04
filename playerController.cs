@@ -8,7 +8,7 @@ public class playerController : MonoBehaviour
     float horizontal;
     float vertical;
     public float speed = 100f;
-    public float jumpForce = 100f;
+    public float jumpForce = 200f;
     public GameObject player;
     Vector2 direction; 
     public SpriteRenderer sp;
@@ -66,6 +66,10 @@ public class playerController : MonoBehaviour
             //Nuss einsammeln
             GameManager.GetComponent<Points>().addPoint(1);
             other.gameObject.SetActive(false);
+        }
+        else if (other.gameObject.tag == "Respawn")
+        {
+            GameManager.GetComponent<Points>().restart();
         }
     }
     void groundCheck()
